@@ -1,25 +1,30 @@
 package utils;
 
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
 /**
  * Created by Dmitriy on 20.11.2015.
  * Project TestWebApp.
  */
+
 public class HibernateUtil {
-    private static SessionFactory sessionFactory = null;
+
+    private static final SessionFactory sessionFactory;
 
     static {
-        Configuration configuration = new Configuration().configure();
-
-        StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
-
-        sessionFactory = configuration.buildSessionFactory(builder.build());
+        try {
+            // Create the SessionFactory from hibernate.cfg.xml
+            sessionFactory = new Configuration().configure().buildSessionFactory();
+        } catch (Throwable ex) {
+            // Make sure you log the exception, as it might be swallowed
+            System.err.println("Initial SessionFactory creation failed." + ex);
+            throw new ExceptionInInitializerError(ex);
+        }
     }
 
-    public static SessionFactory getSessionFactory(){
+    public static SessionFactory getSessionFactory() {
         return sessionFactory;
     }
+
 }
