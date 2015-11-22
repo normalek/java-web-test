@@ -9,12 +9,8 @@
 
         <!-- Assume test is the database name -->
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/test_app</property>
-        <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password">q1w2e3r4</property>
-
-        <!-- List of XML mapping files
-        <mapping resource="Employee.hbm.xml"/>
-        -->
+        <mapping class="db.mapping.RolesEntity"/>
+        <mapping class="db.mapping.UserEntity"/>
 
     </session-factory>
 </hibernate-configuration>
