@@ -1,6 +1,7 @@
 package db.mapping;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by Dmitriy on 22.11.2015.
@@ -8,7 +9,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "user", schema = "test_app")
-public class UserEntity {
+public class UserEntity implements Serializable {
     private int idRec;
     private String username;
     private String password;
