@@ -1,3 +1,7 @@
+<%@ page import="utils.Factory" %>
+<%@ page import="java.util.Collection" %>
+<%@ page import="db.mapping.UserEntity" %>
+<%@ page import="java.util.ArrayList" %>
 <%--
   Created by IntelliJ IDEA.
   User: Dmitriy
@@ -8,9 +12,34 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>$Title$</title>
+    <title>Test web app</title>
   </head>
   <body>
-  $END$
+  <table border="2" width="2" cellspacing="2" cellpadding="2">
+    <thead>
+    <h3>Users table</h3>
+
+    </thead>
+    <tbody>
+    <tr>
+      <th>ID</th>
+      <th>User</th>
+      <th>Password</th>
+      <th>Role</th>
+    </tr>
+    <tr>
+      <% ArrayList<UserEntity> users = (ArrayList<UserEntity>) request.getAttribute("users");
+        for (UserEntity u : users){
+      %>
+      <td><%=u.getIdRec()%></td>
+      <td><%=u.getUsername()%></td>
+      <td><%=u.getPassword()%></td>
+      <td><%=u.getPassword()%></td>
+      <%}%>
+    </tr>
+    </tbody>
+  </table>
+
+
   </body>
 </html>

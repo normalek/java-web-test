@@ -16,6 +16,7 @@ public class UserEntity implements Serializable {
     private String firstName;
     private String lastName;
     private String street;
+    private RolesEntity role;
     private Integer zip;
     private String location;
 
@@ -78,6 +79,7 @@ public class UserEntity implements Serializable {
     public void setStreet(String street) {
         this.street = street;
     }
+
 
     @Basic
     @Column(name = "zip")
