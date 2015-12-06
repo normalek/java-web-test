@@ -16,7 +16,7 @@ public class UserEntity implements Serializable {
     private String firstName;
     private String lastName;
     private String street;
-    private RolesEntity role;
+    private RolesEntity userRole;
     private Integer zip;
     private String location;
 
@@ -99,6 +99,16 @@ public class UserEntity implements Serializable {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "role")
+    public RolesEntity getUserRole() {
+        return this.userRole;
+    }
+
+    public void setUserRole(RolesEntity userRole) {
+        this.userRole = userRole;
     }
 
     @Override

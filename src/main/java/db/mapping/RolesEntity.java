@@ -1,6 +1,8 @@
 package db.mapping;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Dmitriy on 22.11.2015.
@@ -12,6 +14,7 @@ public class RolesEntity {
     private int idRec;
     private String name;
     private String description;
+    private Set<UserEntity> user;
 
     @Id
     @Column(name = "id_rec")
@@ -41,6 +44,15 @@ public class RolesEntity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @OneToMany(mappedBy = "userRole")
+    public Set<UserEntity> getUser() {
+        return this.user;
+    }
+
+    public void setUser(Set<UserEntity> user) {
+        this.user = user;
     }
 
     @Override
